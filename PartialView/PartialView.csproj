@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\A.pubxml" />
+    <None Include="Properties\PublishProfiles\PView2.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\PartialView\Views\PartialView\Index.cshtml" />
