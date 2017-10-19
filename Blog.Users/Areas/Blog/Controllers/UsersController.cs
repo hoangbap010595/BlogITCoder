@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Blog.Users.Areas.Blog.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         // GET: Blog/Users
