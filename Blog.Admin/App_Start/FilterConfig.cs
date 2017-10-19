@@ -8,10 +8,10 @@ namespace Blog.Admin
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new NoCacheGlobalActionFilter());
-        }
-
-        public class NoCacheGlobalActionFilter : ActionFilterAttribute
+	    filters.Add(new NoCacheGlobalActionFilter());
+        }	
+	  
+	public class NoCacheGlobalActionFilter : ActionFilterAttribute
         {
             public override void OnResultExecuted(ResultExecutedContext filterContext)
             {

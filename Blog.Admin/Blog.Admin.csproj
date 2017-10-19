@@ -436,6 +436,7 @@
     <Content Include="Assets\img\demo\Thumbs.db" />
     <Content Include="Assets\img\icons\32\Thumbs.db" />
     <Content Include="Assets\img\Thumbs.db" />
+    <Content Include="Areas\Blog\Views\Category\Category.cshtml" />
     <Content Include="Areas\PartialView\Views\PartialView\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
