@@ -160,6 +160,34 @@ hr {
         border: solid 1px #27a9e3;
     }
 
+    #header span {
+        position: relative;
+        top: -10px;
+        left: 15px;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    #header p {
+        position: relative;
+        top: -35px;
+        left: 80px;
+        color: white;
+        font-size: 8px;
+    }
+      #header b {
+        position: relative;
+        top: -45px;
+        left: 80px;
+        color: white;
+        font-size: 12px;
+        white-space: normal;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        width:50px;
+    }
+
     #header h1 {
         background: url("../img/logo.png") no-repeat scroll 0 0 transparent;
         height: 31px;
@@ -1717,9 +1745,10 @@ form {
     }
 /* Responsive design */
 @media (max-width: 480px) {
-    #header img {
-        display:none;
+    #header img, #header span, #header p, #header b {
+        display: none;
     }
+
     #header h1 {
         top: 10px;
         left: 5px;
@@ -1955,11 +1984,11 @@ form {
     body {
         background: #49CCED;
     }
-    #header img {
-        width: 30px;
-        height: 30px;
-        top: 10px;
+
+     #header img, #header span, #header p, #header b {
+        display: none;
     }
+
     #header h1 {
         top: 10px;
         left: 35px;

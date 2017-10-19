@@ -12,6 +12,9 @@
     <!--Header-part-->
     <div id="header">
         <img src="~/Img/demo/av2.jpg" alt="#" title="avatar" />
+        <span>HoangLe</span>
+        <p>19-10-2017 20:07</p>
+        <b>Online</b>
         @*<h1><a href="dashboard.html">Matrix Admin</a></h1>*@
     </div>
     <!--close-Header-part-->
@@ -54,19 +57,19 @@
     <div id="sidebar">
         <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
         <ul>
-            <li class="active"><a href="/Blog/DashBoard"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-            <li><a href="/Blog/NewFeed"><i class="icon icon-star"></i> <span> New Feed</span></a> </li>
-            <li><a href="/Blog/Category"><i class="icon icon-folder-open"></i> <span> Category</span></a> </li>
-            <li><a href="/Blog/Profile"><i class="icon icon-user"></i> <span> Profile</span></a></li>
-            <li><a href="/Blog/Post"><i class="icon icon-edit"></i> <span> Post</span></a></li>
-            <li><a href="/Blog/Users"><i class="icon icon-group"></i> <span> Users</span></a></li>
-            <li><a href="/Blog/Rules"><i class="icon icon-key"></i> <span> Rules</span></a></li>
-            <li><a href="/Blog/Activity"><i class="icon icon-bolt"></i> <span> Activity</span></a></li>
-            <li><a href="/Blog/Follow"><i class="icon icon-rss"></i> <span> Follow</span></a></li>
+            <li id="dashboard"><a href="/Blog/DashBoard"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+            <li id="newfeed"><a href="/Blog/NewFeed"><i class="icon icon-star"></i> <span> New Feed</span></a> </li>
+            <li id="category"><a href="/Blog/Category"><i class="icon icon-folder-open"></i> <span> Category</span></a> </li>
+            <li id="profile"><a href="/Blog/Profile"><i class="icon icon-user"></i> <span> Profile</span></a></li>
+            <li id="post"><a href="/Blog/Post"><i class="icon icon-edit"></i> <span> Post</span></a></li>
+            <li id="users"><a href="/Blog/Users"><i class="icon icon-group"></i> <span> Users</span></a></li>
+            <li id="rules"><a href="/Blog/Rules"><i class="icon icon-key"></i> <span> Rules</span></a></li>
+            <li id="activity"><a href="/Blog/Activity"><i class="icon icon-bolt"></i> <span> Activity</span></a></li>
+            <li id="follow"><a href="/Blog/Follow"><i class="icon icon-rss"></i> <span> Follow</span></a></li>
             <li class="submenu">
                 <a href="#"><i class="icon icon-cog"></i> <span>Settings</span> <span class="label label-important">1</span></a>
                 <ul>
-                    <li><a href="/Blog/Setting">Theme</a></li>
+                    <li id="setting"><a href="/Blog/Setting">Theme</a></li>
                 </ul>
             </li>
             <li class="content">
@@ -90,11 +93,6 @@
     <!--sidebar-menu-->
     <!--main-container-part-->
     <div id="content">
-        <!--breadcrumbs-->
-        <div id="content-header">
-            <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-        </div>
-        <!--End-breadcrumbs-->
         @RenderBody()
     </div>
     <!--Footer-part-->
