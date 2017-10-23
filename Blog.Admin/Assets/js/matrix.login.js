@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 	var login = $('#loginform');
 	var recover = $('#recoverform');
+	var register = $('#registerform')
 	var speed = 400;
 
 	$('#to-recover').click(function(){
@@ -10,16 +11,13 @@ $(document).ready(function(){
 		$("#loginform").slideUp();
 		$("#recoverform").fadeIn();
 	});
+
 	$('#to-login').click(function(){
 		
 		$("#recoverform").hide();
 		$("#loginform").fadeIn();
 	});
 	
-	
-	$('#to-login').click(function(){
-	
-	});
     
     if($.browser.msie == true && $.browser.version.slice(0,3) < 10) {
         $('input[placeholder]').each(function(){ 

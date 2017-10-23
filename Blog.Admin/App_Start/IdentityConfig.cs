@@ -72,7 +72,7 @@ namespace Blog.Admin
                 client: Twilio
             );
 
-            // ASPSMS Begin 
+            // ASPSMS Begin: https://webservice.aspsms.com/aspsmsx2.asmx?WSDL
             var soapSms = new Blog.Admin.ASPSMSX2.ASPSMSX2SoapClient("ASPSMSX2Soap");
             soapSms.SendSimpleTextSMS(
               Keys.SMSAccountIdentification,
@@ -80,7 +80,7 @@ namespace Blog.Admin
               message.Destination,
               Keys.SMSAccountFrom,
               message.Body);
-              soapSms.Close();
+            soapSms.Close();
             return Task.FromResult(0);
         }
 

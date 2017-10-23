@@ -145,6 +145,7 @@ $(document).ready(function () {
         $('#lightbox').hide(200);
     });
 
+    $('#logoutForm').prop("action", "/Account/LogOff");
 });
 activeMenu();
 function activeMenu() {
