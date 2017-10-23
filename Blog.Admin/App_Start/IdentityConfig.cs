@@ -15,7 +15,14 @@ using System.Net.Mail;
 using System.Configuration;
 using System.Net;
 using System.Net.Mime;
+using System.Diagnostics;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
+using Twilio.Clients;
+using Twilio.Http;
 using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace Blog.Admin
 {
@@ -24,75 +31,24 @@ namespace Blog.Admin
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            //SendMail(message);
-            return configSendGridasync(message);
+            return Task.FromResult(0);     
+            //return configSendGridasync(message);
         }
         private Task configSendGridasync(IdentityMessage message)
         {
-            var myMessage = new SendGridMessage();
-            myMessage.AddTo(message.Destination);
-            myMessage.From = new System.Net.Mail.MailAddress(
-                                "lchoang1995@gmail.com", "HoangLe");
-            myMessage.Subject = message.Subject;
-            myMessage.Text = message.Body;
-            myMessage.Html = message.Body;
+            //var apiKey = Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
+            var proxy = new WebProxy("http://proxy.hcm.fpt.vn:80");
+            var client = new SendGridClient(Keys.MAILApiKey);
+            var from = new EmailAddress("lchoang1995@gmail.com", "Example User");
+            var subject = "Sending with SendGrid is Fun";
+            var to = new EmailAddress("lchoang1995@gmail", "Example User");
+            var plainTextContent = "and easy to do anywhere, even with C#";
+            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            
+            var response =  client.SendEmailAsync(msg);
 
-            //var credentials = new NetworkCredential(
-            //           ConfigurationManager.AppSettings["mailAccount"],
-            //           ConfigurationManager.AppSettings["mailPassword"]
-            //           );
-            var credentials = new NetworkCredential(
-                       "lchoang1995@gmail.com",
-                       "Thienan@111"
-                       );
-
-            // Create a Web transport for sending email.
-            var transportWeb = new Web(credentials);
-
-            // Send the email.
-            if (transportWeb != null)
-            {
-                return transportWeb.DeliverAsync(myMessage);
-            }
-            else
-            {
-                return Task.FromResult(0);
-            }
-        }
-        public void SendMail(IdentityMessage message)
-        {
-            #region formatter
-            string text = string.Format("Please click on this link to {0}: {1}", message.Subject, message.Body);
-            string html = "Please confirm your account by clicking this link: <a href=\"" + message.Body + "\">link</a><br/>";
-
-            html += HttpUtility.HtmlEncode(@"Or click on the copy the following link on the browser:" + message.Body);
-            #endregion
-
-            var msg = new MailMessage();
-            msg.To.Add(message.Destination);
-
-            msg.From = new System.Net.Mail.MailAddress(
-                                "hoangbap010595@gmail.com", "HoangLe");
-            msg.Subject = message.Subject;
-            msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
-            msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
-
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = Convert.ToInt32(587);
-            smtp.UseDefaultCredentials = false;
-
-            //smtp.Credentials = new NetworkCredential(
-            //           ConfigurationManager.AppSettings["mailAccount"],
-            //           ConfigurationManager.AppSettings["mailPassword"]
-            //           );
-            smtp.Credentials = new NetworkCredential(
-                     "hoangbap1595@gmail.com",
-                     "Thienan@111"
-                     );
-
-            smtp.EnableSsl = false;
-            smtp.Send(msg);
+            return response;
         }
     }
 
@@ -101,9 +57,41 @@ namespace Blog.Admin
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your SMS service here to send a text message.
+            // Twilio Begin
+            //TwilioClient.Init(Keys.SMSAccountIdentification, Keys.SMSAccountPassword);
+
+            //Twilio Begin
+            var Twilio = new TwilioRestClient(
+              Keys.SMSAccountIdentification,
+              Keys.SMSAccountPassword);
+
+            var result = MessageResource.Create(
+                to: message.Destination,
+                from: Keys.SMSAccountFrom,
+                body: message.Body,
+                client: Twilio
+            );
+
+            // ASPSMS Begin 
+            var soapSms = new Blog.Admin.ASPSMSX2.ASPSMSX2SoapClient("ASPSMSX2Soap");
+            soapSms.SendSimpleTextSMS(
+              Keys.SMSAccountIdentification,
+              Keys.SMSAccountPassword,
+              message.Destination,
+              Keys.SMSAccountFrom,
+              message.Body);
+              soapSms.Close();
             return Task.FromResult(0);
         }
 
+    }
+    public static class Keys
+    {
+        public static string SMSAccountIdentification = "ACd7f8819318d73c29d209371fb91edae1";
+        public static string SMSAccountPassword = "df22d77470ad0358c6da28fa34b45e60";
+        public static string SMSAccountFrom = "+15732674542";
+
+        public static string MAILApiKey = "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";
     }
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
@@ -114,7 +102,7 @@ namespace Blog.Admin
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -158,7 +146,7 @@ namespace Blog.Admin
                 manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
                     {
-                        TokenLifespan = TimeSpan.FromMinutes(20)
+                        TokenLifespan = TimeSpan.FromHours(3)
                     };
             }
             return manager;
