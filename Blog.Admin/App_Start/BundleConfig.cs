@@ -54,35 +54,43 @@ namespace Blog.Admin
 
             //matrix
             bundles.Add(new ScriptBundle("~/bundles/matrix").Include(
-                     "~/Assets/js/excanvas.min.js"
-                     , "~/Assets/js/jquery.min.js"
+                      "~/Assets/js/jquery.min.js"
                      , "~/Assets/js/jquery.ui.custom.js"
-                     , "~/Assets/js/bootstrap.min.js"
-                     , "~/Assets/js/jquery.flot.min.js"
-                     , "~/Assets/js/jquery.flot.resize.min.js"
-                     , "~/Assets/js/jquery.peity.min.js"
-                     , "~/Assets/js/fullcalendar.min.js"
-                     , "~/Assets/js/matrix.js"
-                     , "~/Assets/js/matrix.dashboard.js"
-                     , "~/Assets/js/jquery.gritter.min.js"
-                     , "~/Assets/js/matrix.interface.js"
-                     , "~/Assets/js/matrix.chat.js"
                      , "~/Assets/js/jquery.validate.js"
-                     , "~/Assets/js/matrix.form_validation.js"
-                     , "~/Assets/js/jquery.wizard.js"
+                     , "~/Assets/js/bootstrap.min.js"
+                     , "~/Assets/js/bootstrap-datepicker.js"
+                     , "~/Assets/js/bootstrap-colorpicker.js"
+                     , "~/Assets/js/masked.js"
                      , "~/Assets/js/jquery.uniform.js"
                      , "~/Assets/js/select2.min.js"
-                     , "~/Assets/js/matrix.popover.js"
+                     , "~/Assets/js/jquery.peity.min.js"
                      , "~/Assets/js/jquery.dataTables.min.js"
-                     , "~/Assets/js/matrix.tables.js"));
+                     , "~/Assets/js/jquery.gritter.min.js"
+                     , "~/Assets/js/jquery.flot.min.js"
+                     , "~/Assets/js/jquery.flot.resize.min.js"
+                     , "~/Assets/js/matrix.tables.js"
+                     , "~/Assets/js/matrix.js"
+                     , "~/Assets/js/matrix.form_common.js"
+                     , "~/Assets/js/wysihtml5-0.3.0.js"
+                     , "~/Assets/js/excanvas.min.js"
+                     , "~/Assets/js/fullcalendar.min.js"
+                     , "~/Assets/js/matrix.js"
+                     , "~/Assets/js/matrix.dashboard.js"              
+                     , "~/Assets/js/matrix.interface.js"                   
+                     , "~/Assets/js/matrix.popover.js"
+                     , "~/Assets/js/bootstrap-wysihtml5.js"));
 
             bundles.Add(new StyleBundle("~/Content/matrix").Include(
                       "~/Assets/css/bootstrap.min.css"
                       , "~/Assets/css/bootstrap-responsive.min.css"
                       , "~/Assets/css/fullcalendar.css"
+                      , "~/Assets/css/colorpicker.css"
+                      , "~/Assets/css/datepicker.css"
                       , "~/Assets/css/matrix-style.css"
                       , "~/Assets/css/matrix-media.css"
-                      , "~/Assets/css/font-awesome.css"));
+                      , "~/Assets/css/font-awesome.css"
+                      , "~/Assets/css/select2.css"
+                      , "~/Assets/css/uniform.css"));
         }
     }
 }

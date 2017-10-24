@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="taarbciTohL4TGHzU6B6JouD1f0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="u/CmLtucMFFNVfyq4vX3RAoaQWc=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="ASPSMSX2Soap2">
+    <bindingConfiguration bindingType="basicHttpBinding" name="ASPSMSX2Soap">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ASPSMSX2Soap2</serializedValue>
+          <serializedValue>ASPSMSX2Soap</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="ASPSMSX2Soap3">
+    <bindingConfiguration bindingType="basicHttpBinding" name="ASPSMSX2Soap1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ASPSMSX2Soap3</serializedValue>
+          <serializedValue>ASPSMSX2Soap1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -219,10 +219,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="customBinding" name="ASPSMSX2Soap121">
+    <bindingConfiguration bindingType="customBinding" name="ASPSMSX2Soap12">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ASPSMSX2Soap121</serializedValue>
+          <serializedValue>ASPSMSX2Soap12</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -375,7 +375,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ASPSMSX2Soap1" contract="ASPSMSX2.ASPSMSX2Soap" bindingType="basicHttpBinding" address="https://webservice.aspsms.com/aspsmsx2.asmx" bindingConfiguration="ASPSMSX2Soap2">
+    <endpoint name="ASPSMSX2Soap" contract="ASPSMSX2.ASPSMSX2Soap" bindingType="basicHttpBinding" address="https://webservice.aspsms.com/aspsmsx2.asmx" bindingConfiguration="ASPSMSX2Soap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://webservice.aspsms.com/aspsmsx2.asmx</serializedValue>
@@ -387,7 +387,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ASPSMSX2Soap2</serializedValue>
+          <serializedValue>ASPSMSX2Soap</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ASPSMSX2.ASPSMSX2Soap</serializedValue>
@@ -450,7 +450,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ASPSMSX2Soap1</serializedValue>
+          <serializedValue>ASPSMSX2Soap</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -460,7 +460,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="ASPSMSX2Soap121" contract="ASPSMSX2.ASPSMSX2Soap" bindingType="customBinding" address="https://webservice.aspsms.com/aspsmsx2.asmx" bindingConfiguration="ASPSMSX2Soap121">
+    <endpoint name="ASPSMSX2Soap12" contract="ASPSMSX2.ASPSMSX2Soap" bindingType="customBinding" address="https://webservice.aspsms.com/aspsmsx2.asmx" bindingConfiguration="ASPSMSX2Soap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://webservice.aspsms.com/aspsmsx2.asmx</serializedValue>
@@ -472,7 +472,7 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ASPSMSX2Soap121</serializedValue>
+          <serializedValue>ASPSMSX2Soap12</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ASPSMSX2.ASPSMSX2Soap</serializedValue>
@@ -535,7 +535,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ASPSMSX2Soap121</serializedValue>
+          <serializedValue>ASPSMSX2Soap12</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

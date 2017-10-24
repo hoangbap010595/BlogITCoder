@@ -3,12 +3,121 @@
     ViewBag.Title = "ProfileAuth";
     Layout = "~/Views/Shared/_Matrix.cshtml";
 }
+<style>
+    .form-actions {
+        padding: 5px 20px 5px;
+        /* margin-top: 20px; */
+        /* margin-bottom: 20px; */
+        background-color: #f5f5f5;
+        border-top: 1px solid #e5e5e5;
+    }
 
+    .clear {
+        clear: both;
+    }
+</style>
  <!--breadcrumbs-->
 <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to DashBoard" class="tip-bottom"><i class="icon-home"></i> DashBoard</a> <a href="/Blog/Profile" class="current">Profile</a> </div>
 </div>
 <!--End-breadcrumbs-->
 
-<h2>ProfileAuth Test</h2>
+<div class="container-fluid">
+    <form action="#" method="post" class="form-horizontal">
+        <div class="form-actions">
+            <button type="submit" class="pull-right btn btn-success">Save</button>
+        </div>
+        <div class="clear"></div>
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-bookmark"></i> </span>
+                        <h5>Personal-Primary</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <div class="control-group">
+                            <label class="control-label">Tên hiển thị:</label>
+                            <div class="controls">
+                                <input type="text" class="span11" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Tên đăng nhập:</label>
+                            <div class="controls">
+                                <input type="text" class="span11" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Email:</label>
+                            <div class="controls">
+                                <input type="text" class="span11" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Điện thoại:</label>
+                            <div class="controls">
+                                <input type="text" class="span11" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Giới thiệu</label>
+                            <div class="controls">
+                                <textarea class="span11"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End col 1-->
+            <div class="span6">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>Personal-Detail</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <div class="control-group">
+                            <label class="control-label">Họ:</label>
+                            <div class="controls">
+                                <input type="text" class="span11" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Tên:</label>
+                            <div class="controls">
+                                <input type="text" class="span11" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Ngày sinh:</label>
+                            <div class="controls">
+                                <div data-date="12-02-2012" class="input-append date datepicker">
+                                    <input type="text" value="12-02-2012" data-date-format="mm-dd-yyyy" class="span11">
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Địa chỉ 1</label>
+                            <div class="controls">
+                                <textarea class="span11"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Địa chỉ 2</label>
+                            <div class="controls">
+                                <textarea class="span11"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End col 2-->
+        </div>
+        <!--End Row 1-->
+    </form>
+    <!--End Form 1-->
+</div>
 

@@ -118,7 +118,7 @@ namespace Blog.Admin.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng.");
                     return View(model);
             }
         }
@@ -267,10 +267,6 @@ namespace Blog.Admin.Controllers
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
-            }
-            else
-            {
-                ModelState.AddModelError("","Vui lòng nhập đúng định dạng email");
             }
             // If we got this far, something failed, redisplay form
             return View(model);

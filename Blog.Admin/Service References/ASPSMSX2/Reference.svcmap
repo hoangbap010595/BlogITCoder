@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bd189378-911f-42dd-acc8-b974fab6e3f5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8735fff6-679d-4279-b9ef-d7daa60a0b64" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="https://webservice.aspsms.com/aspsmsx2.asmx?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="aspsmsx2.wsdl" MetadataType="Wsdl" ID="5862dcb3-4fb0-42f4-88e9-12b452270dce" SourceId="1" SourceUrl="https://webservice.aspsms.com/aspsmsx2.asmx?WSDL" />
+    <MetadataFile FileName="aspsmsx2.wsdl" MetadataType="Wsdl" ID="43688ce7-8e88-45b3-bc7a-f39bae81ea99" SourceId="1" SourceUrl="https://webservice.aspsms.com/aspsmsx2.asmx?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -5,7 +5,7 @@ namespace Blog.Admin.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email không được bỏ trống!")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -28,7 +28,7 @@ namespace Blog.Admin.Models
         [Required]
         public string Provider { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập  mã xác nhận")]
         [Display(Name = "Code")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
@@ -41,19 +41,19 @@ namespace Blog.Admin.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email không được bỏ trống!")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email không được bỏ trống!")]
         [Display(Name = "Email")]
-        [EmailAddress]
+        //[EmailAddress(ErrorMessage = "Email không hợp lệ")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password không được bỏ trống!")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -64,43 +64,43 @@ namespace Blog.Admin.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Username không được bỏ trống!")]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email không được bỏ trống!")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải lớn hơn {0} ký tự.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu không trùng khớp.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email không được bỏ trống!")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải lớn hơn {0} ký tự.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu không trùng khớp.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -108,9 +108,39 @@ namespace Blog.Admin.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email không được bỏ trống!")]
+        [EmailAddress(ErrorMessage ="Email không hợp lệ")]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class ObjUsersViewModel
+    {
+        [Display(Name = "DisplayName")]
+        public string DisplayName { get; set; }
+
+        [Display(Name = "FirstName")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "LastName")]
+        public string LastName { get; set; }
+
+        [Display(Name = "FullName")]
+        public string FullName { get; set; }
+
+        [Display(Name = "DateOfBirth")]
+        public string DateOfBirth { get; set; }
+
+        [Display(Name = "Address1")]
+        public string Address1 { get; set; }
+
+        [Display(Name = "Address2")]
+        public string Address2 { get; set; }
+
+        [Display(Name = "Passport")]
+        public string Passport { get; set; }
+
+        [Display(Name = "Avatar")]
+        public string Avatar { get; set; }
     }
 }
