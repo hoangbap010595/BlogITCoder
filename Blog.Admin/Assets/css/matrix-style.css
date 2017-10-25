@@ -94,7 +94,33 @@ hr {
 .label-important, .badge-important {
     background: #f74d4d;
 }
-
+/*Custom UI*/
+/*Table*/
+.col-actions{
+        width:120px;
+    }
+.col-ident-id{
+    width:30px;
+}
+.col-datetime{
+    width:125px;
+}
+.col-date{
+    width:100px;
+}
+.col-bit{
+    width:40px;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-center{
+    text-align: center;
+}
+/*End Table*/
 /*Metro Background color class*/
 .bg_lb {
     background: #27a9e3;

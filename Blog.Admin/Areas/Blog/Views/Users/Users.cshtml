@@ -3,12 +3,29 @@
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_Matrix.cshtml";
 }
+<style>
+    .widget-title {
+        background: #efefef;
+        border-bottom: 1px solid #CDCDCD;
+        height: 30px;
+    }
 
- <!--breadcrumbs-->
+        .widget-title span.icon {
+            padding: 0 !important;
+            float: left;
+            border-right: none !important;
+        }
+</style>
+<!--breadcrumbs-->
 <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to DashBoard" class="tip-bottom"><i class="icon-home"></i> DashBoard</a> <a href="/Blog/Users" class="current">Users</a> </div>
 </div>
 <!--End-breadcrumbs-->
-
-<h2>Users Test</h2>
-
+<div class="widget-box">
+    <div class="widget-title">
+        <button class="pull-right btn btn-default"><span class="icon"><i class="icon-plus"></i> </span> Thêm mới</button>
+    </div>
+    <div class="widget-content nopadding">
+        <table class="table table-bordered data-table-users"></table>
+    </div>
+</div>

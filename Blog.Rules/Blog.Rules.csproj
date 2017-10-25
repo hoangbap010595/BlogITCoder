@@ -132,9 +132,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Blog\Views\Rules\Rules.cshtml" />
+    <Content Include="Scripts\Blog\Rules\rules.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Rules.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

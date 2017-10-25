@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - iTCoder.com</title>
     @Styles.Render("~/Content/matrix")
-    @*@Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.Render("~/bundles/modernizr")
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -94,6 +94,7 @@
     <!--sidebar-menu-->
     <!--main-container-part-->
     <div id="content">
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
         @RenderBody()
     </div>
     <!--Footer-part-->
@@ -101,8 +102,9 @@
         <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
     </div>
     <!--end-Footer-part-->
-    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/matrix")
+   
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
         // This function is called from the pop-up menus to transfer to

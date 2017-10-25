@@ -57,6 +57,7 @@ namespace Blog.Admin.Controllers
 
         //
         // GET: /Account/Login
+        [HttpPost]
         [AllowAnonymous]
         public ActionResult TestUser()
         {
@@ -74,6 +75,7 @@ namespace Blog.Admin.Controllers
 
         //
         // GET: /Account/Login
+        [HttpPost]
         [AllowAnonymous]
         public ActionResult TestRoles()
         {

@@ -3,6 +3,18 @@
     ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_Matrix.cshtml";
 }
+<style>
+    .widget-title{
+    background: #efefef;
+    border-bottom: 1px solid #CDCDCD;
+    height: 30px;
+}
+    .widget-title span.icon {
+    padding: 0 !important;
+    float: left;
+    border-right: none !important; 
+}
+</style>
 <!--breadcrumbs-->
 <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to DashBoard" class="tip-bottom"><i class="icon-home"></i>DashBoard</a> <a href="/Blog/Category" class="current">Category</a> </div>
@@ -10,133 +22,86 @@
 <!--End-breadcrumbs-->
 <div class="widget-box">
     <div class="widget-title">
-        <span class="icon"><i class="icon-th"></i></span>
-        <h5>Data table</h5>
+        <button class="pull-right btn btn-default"><span class="icon"><i class="icon-plus"></i> </span> Thêm mới</button>
     </div>
     <div class="widget-content nopadding">
-        <table class="table table-bordered data-table">
+        <table class="table table-bordered data-table-category">
             <thead>
                 <tr>
+                    <th class="col-ident-id">STT</th>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Enable</th>
-                    <th>Date Create</th>
+                    <th>Name Clean</th>
+                    <th class="col-bit">Enable</th>
+                    <th class="col-date">Date Create</th>
+                    <th class="col-actions">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="gradeX">
+                    <td>1</td>
+                    <td>001</td>
                     <td>Trident</td>
+                    <td>Trident</td>
+                    <td>True</td>
+                    <td class="center">2017-25-10</td>
                     <td>
-                        Internet
-                        Explorer 4.0
+                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
+                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
+                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
                     </td>
-                    <td>Win 95+</td>
-                    <td class="center">4</td>
                 </tr>
                 <tr class="gradeC">
+                    <td>2</td>
+                    <td>002</td>
                     <td>Trident</td>
+                    <td>Trident</td>
+                    <td>True</td>
+                    <td class="center">2017-25-10</td>
                     <td>
-                        Internet
-                        Explorer 5.0
+                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
+                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
+                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
                     </td>
-                    <td>Win 95+</td>
-                    <td class="center">5</td>
                 </tr>
                 <tr class="gradeA">
+                    <td>3</td>
+                    <td>003</td>
                     <td>Trident</td>
+                    <td>Trident</td>
+                    <td>True</td>
+                    <td class="text-right">2017-25-10</td>
                     <td>
-                        Internet
-                        Explorer 5.5
+                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
+                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
+                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
                     </td>
-                    <td>Win 95+</td>
-                    <td class="center">5.5</td>
                 </tr>
                 <tr class="gradeA">
+                    <td>4</td>
+                    <td>004</td>
                     <td>Trident</td>
+                    <td>Trident</td>
+                    <td>True</td>
+                    <td class="center">2017-25-10</td>
                     <td>
-                        Internet
-                        Explorer 6
+                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
+                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
+                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
                     </td>
-                    <td>Win 98+</td>
-                    <td class="center">6</td>
                 </tr>
                 <tr class="gradeA">
+                    <td>5</td>
+                    <td>005</td>
                     <td>Trident</td>
-                    <td>Internet Explorer 7</td>
-                    <td>Win XP SP2+</td>
-                    <td class="center">7</td>
-                </tr>
-                <tr class="gradeA">
                     <td>Trident</td>
-                    <td>AOL browser (AOL desktop)</td>
-                    <td>Win XP</td>
-                    <td class="center">6</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Firefox 1.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td class="center">1.7</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Firefox 1.5</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td class="center">1.8</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Firefox 2.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td class="center">1.8</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Firefox 3.0</td>
-                    <td>Win 2k+ / OSX.3+</td>
-                    <td class="center">1.9</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td class="center">1.8</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Camino 1.5</td>
-                    <td>OSX.3+</td>
-                    <td class="center">1.8</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Netscape 7.2</td>
-                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                    <td class="center">1.7</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Netscape Browser 8</td>
-                    <td>Win 98SE+</td>
-                    <td class="center">1.7</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Netscape Navigator 9</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td class="center">1.8</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Mozilla 1.0</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td class="center">1</td>
-                </tr>
-                <tr class="gradeA">
-                    <td>Gecko</td>
-                    <td>Mozilla 1.1</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td class="center">1.1</td>
+                    <td>True</td>
+                    <td class="center">2017-25-10</td>
+                    <td>
+                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
+                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
+                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
+                    </td>
                 </tr>
             </tbody>
         </table>

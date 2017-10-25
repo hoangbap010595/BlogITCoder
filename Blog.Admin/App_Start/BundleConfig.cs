@@ -68,7 +68,7 @@ namespace Blog.Admin
                      , "~/Assets/js/jquery.gritter.min.js"
                      , "~/Assets/js/jquery.flot.min.js"
                      , "~/Assets/js/jquery.flot.resize.min.js"
-                     , "~/Assets/js/matrix.tables.js"
+                      , "~/Assets/js/matrix.tables.js"
                      , "~/Assets/js/matrix.js"
                      , "~/Assets/js/matrix.form_common.js"
                      , "~/Assets/js/wysihtml5-0.3.0.js"
@@ -88,9 +88,11 @@ namespace Blog.Admin
                       , "~/Assets/css/datepicker.css"
                       , "~/Assets/css/matrix-style.css"
                       , "~/Assets/css/matrix-media.css"
+                      , "~/Assets/css/jquery.gritter.css"
                       , "~/Assets/css/font-awesome.css"
                       , "~/Assets/css/select2.css"
-                      , "~/Assets/css/uniform.css"));
+                      , "~/Assets/css/uniform.css"
+                      , "~/Assets/css/bootstrap-wysihtml5.css"));
         }
     }
 }
