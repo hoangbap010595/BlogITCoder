@@ -61,18 +61,11 @@ namespace Blog.Admin.Controllers
         [AllowAnonymous]
         public ActionResult TestUser()
         {
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
-            var ls = userManager.GetRoles(User.Identity.GetUserId());
-            userManager.SendEmail(User.Identity.GetUserId(), "Test Mail", "Body of mail");
             var lsUser = UserManager.Users.ToList();
-            var lsData = new Dictionary<string, object>();
-            lsData.Add("listUserRole", ls);
-            lsData.Add("listUser", lsUser);
-            var data = Json(lsData, JsonRequestBehavior.AllowGet);
+            var data = Json(lsUser, JsonRequestBehavior.AllowGet);
+            data.MaxJsonLength = int.MaxValue;
             return data;
         }
-
         //
         // GET: /Account/Login
         [HttpPost]

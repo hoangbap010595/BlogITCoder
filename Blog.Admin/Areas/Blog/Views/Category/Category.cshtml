@@ -4,17 +4,19 @@
     Layout = "~/Views/Shared/_Matrix.cshtml";
 }
 <style>
-    .widget-title{
-    background: #efefef;
-    border-bottom: 1px solid #CDCDCD;
-    height: 30px;
-}
-    .widget-title span.icon {
-    padding: 0 !important;
-    float: left;
-    border-right: none !important; 
-}
+    .widget-title {
+        background: #efefef;
+        border-bottom: 1px solid #CDCDCD;
+        height: 30px;
+    }
+
+        .widget-title span.icon {
+            padding: 0 !important;
+            float: left;
+            border-right: none !important;
+        }
 </style>
+<script src="~/Scripts/Blog/Category/category.js"></script>
 <!--breadcrumbs-->
 <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to DashBoard" class="tip-bottom"><i class="icon-home"></i>DashBoard</a> <a href="/Blog/Category" class="current">Category</a> </div>
@@ -25,85 +27,7 @@
         <button class="pull-right btn btn-default"><span class="icon"><i class="icon-plus"></i> </span> Thêm mới</button>
     </div>
     <div class="widget-content nopadding">
-        <table class="table table-bordered data-table-category">
-            <thead>
-                <tr>
-                    <th class="col-ident-id">STT</th>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Name Clean</th>
-                    <th class="col-bit">Enable</th>
-                    <th class="col-date">Date Create</th>
-                    <th class="col-actions">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="gradeX">
-                    <td>1</td>
-                    <td>001</td>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>True</td>
-                    <td class="center">2017-25-10</td>
-                    <td>
-                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
-                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
-                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
-                    </td>
-                </tr>
-                <tr class="gradeC">
-                    <td>2</td>
-                    <td>002</td>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>True</td>
-                    <td class="center">2017-25-10</td>
-                    <td>
-                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
-                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
-                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
-                    </td>
-                </tr>
-                <tr class="gradeA">
-                    <td>3</td>
-                    <td>003</td>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>True</td>
-                    <td class="text-right">2017-25-10</td>
-                    <td>
-                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
-                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
-                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
-                    </td>
-                </tr>
-                <tr class="gradeA">
-                    <td>4</td>
-                    <td>004</td>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>True</td>
-                    <td class="center">2017-25-10</td>
-                    <td>
-                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
-                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
-                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
-                    </td>
-                </tr>
-                <tr class="gradeA">
-                    <td>5</td>
-                    <td>005</td>
-                    <td>Trident</td>
-                    <td>Trident</td>
-                    <td>True</td>
-                    <td class="center">2017-25-10</td>
-                    <td>
-                        <button class="pull-right btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>
-                        <button class="pull-right btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>
-                        <button class="pull-right btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>
-                    </td>
-                </tr>
-            </tbody>
+        <table class="table table-bordered" id="data-table-category">
         </table>
     </div>
 </div>

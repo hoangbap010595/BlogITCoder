@@ -8,12 +8,6 @@ var AjaxConfig = {
 var UC = [];
 $(document).ready(function () {
 
-    $('.data-table-category').dataTable({
-        "bJQueryUI": true,
-        "sPaginationType": "full_numbers",
-        "sDom": '<""l>t<"F"fp>'
-    });
-
     $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
     $('select').select2();
@@ -53,16 +47,16 @@ function oLanguage() {
 
 function twoAction(data) {
     var html = '';
-    html += '<button onclick="editAction({data: \'' + data + '\'})" class="btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>';
-    html += '<button onclick="trashAction({data: \'' + data + '\'})" class="btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>';
+    html += '<button onclick="R.events.editAction({data: \'' + data + '\'})" class="btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>';
+    html += '<button onclick="R.events.trashAction({data: \'' + data + '\'})" class="btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>';
     html += '';
     return html;
 }
 function threeAction(data) {
     var html = '';
-    html += '<button onclick="detailsAction({data: \'' + data + '\'})" class="btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>';
-    html += '<button onclick="editAction({data: \'' + data + '\'})" class="btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>';
-    html += '<button onclick="trashAction({data: \'' + data + '\'})" class="btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>';
+    html += '<button onclick="R.events.detailsAction({data: \'' + data + '\'})" class="btn btn-success"><span class="icon"><i class="icon-list-alt"></i></span></button>';
+    html += '<button onclick="R.events.editAction({data: \'' + data + '\'})" class="btn btn-warning"><span class="icon"><i class="icon-edit"></i></span></button>';
+    html += '<button onclick="R.events.trashAction({data: \'' + data + '\'})" class="btn btn-danger"><span class="icon"><i class="icon-trash"></i></span></button>';
     html += '';
     return html;
 }
@@ -73,10 +67,12 @@ function createGridDataTable(allData) {
     var bJQueryUI = allData.jQueryUI || true;
     var sPaginationType = allData.page || "full_numbers";
     var sDom = allData.dom || '<""l>t<"F"fp>'
+    var fnRowCallback = allData.fnRowCallback || null;
+    var fnFooterCallback = allData.fnFooterCallback || null;
     var url2 = allData.url;
     var spName = url2.spName || "";
     var url = url2.url || "";
-    var filter = allData.filter || [];
+    var filter = allData.filter || { spName: spName };
     //column
     var colDefs = allData.colDefs || [];
     var columns = allData.columns;
@@ -84,17 +80,6 @@ function createGridDataTable(allData) {
     var refix = allData.refix;
     var rkey = refix.key || 0;
     var rid = refix.id || "";
-    if (rkey > 0) {
-        columns.pop({ "sTitle": "STT", "mData": "Stt" });
-        columns.push({ "sTitle": "Actions", "mData": "Actions" });
-        if (rkey == 1) {
-            colDefs.push({ "sClass": "text-center", "aTargets": [0], "sWidth": "30px" })
-            colDefs.push({ "sClass": "text-center", "aTargets": [columns.length - 1], "sWidth": "75px" })
-        } else if (rkey == 2) {
-            colDefs.push({ "sClass": "text-center", "aTargets": [0], "sWidth": "30px" })
-            colDefs.push({ "sClass": "text-center", "aTargets": [columns.length - 1], "sWidth": "120px" })
-        }
-    }
 
     var dataTable = $(ctrID2).dataTable({
         "bJQueryUI": bJQueryUI,
@@ -103,7 +88,14 @@ function createGridDataTable(allData) {
         "oLanguage": oLanguage(),
         "aoColumnDefs": colDefs,
         "aoColumns": columns,
-        "aaData": []//default null
+        "aaData": [],//default null
+        "bFilter": true,
+        "sScrollX": "100%",
+        "sScrollXInner": "110%",
+        "bScrollCollapse": true,
+        "fnRowCallback": fnRowCallback,
+        "fnFooterCallback": fnFooterCallback,
+        "sScrollY": "100%",
     });
 
     getDataObject({
@@ -126,8 +118,8 @@ function refixData(allData) {
     var data = allData.data;
     var key = allData.key || 0;
     var id = allData.id;
-    if (data == null)
-        return;
+    if (data.length == 0)
+        return d;
     switch (key) {
         case 1:
             for (var i = 0; i < data.length; i++) {
@@ -138,8 +130,8 @@ function refixData(allData) {
             break;
         case 2:
             for (var i = 0; i < data.length; i++) {
-                d[i] = data[i].Stt = i + 1;
-                d[i] = data[i].Actions = threeAction(data[i][id]);
+                data[i].Stt = i + 1;
+                data[i].Actions = threeAction(data[i][id]);
                 d[i] = data[i];
             }
             break;
@@ -254,4 +246,17 @@ function deepCopy(allData) {
     var newData = JSON.parse(jsonString);
 
     return newData;
+}
+
+function parseDate(jsonDate) {
+    var re = /-?\d+/;
+    var m = re.exec(jsonDate);
+    var date = new Date(parseInt(m[0]));
+    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear(); 
+}
+function parseDateTime(jsonDate) {
+    var re = /-?\d+/;
+    var m = re.exec(jsonDate);
+    var date = new Date(parseInt(m[0]));
+    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 }

@@ -171,7 +171,7 @@ namespace PartialView.Areas.PartialView.Models
             return jsonReturn;
         }
 
-        public List<Dictionary<string, object>> ConvertDataTableToListDictionary(DataTable dt, params object[] prObjs)
+        public List<Dictionary<string, object>> ConvertDataTableToListDictionary(DataTable dt)
         {
             #region First Config
             List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();

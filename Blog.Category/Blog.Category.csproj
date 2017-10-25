@@ -130,12 +130,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Blog\Views\Category\Category.cshtml" />
+    <Content Include="Scripts\Blog\Category\category.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Blog\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Category.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PartialView\PartialView.csproj">
+      <Project>{8ad0c4ee-0dba-4570-9425-d87c25448567}</Project>
+      <Name>PartialView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -148,7 +158,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>17494</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
