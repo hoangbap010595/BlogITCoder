@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\PartialView\Controllers\PartialViewController.cs" />
+    <Compile Include="Areas\PartialView\Models\DataConfig.cs" />
     <Compile Include="Areas\PartialView\Models\v1HashMd5.cs" />
     <Compile Include="Areas\PartialView\Models\v1SqlHelper.cs" />
     <Compile Include="Areas\PartialView\Models\v2Convert.cs" />
@@ -156,7 +157,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7126</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

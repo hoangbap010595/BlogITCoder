@@ -54,12 +54,11 @@ namespace Blog.Admin.Controllers
                 _userManager = value;
             }
         }
-
+        #region ============Custom Account================
         //
-        // GET: /Account/Login
+        // POST: /Account/GetListUser
         [HttpPost]
-        [AllowAnonymous]
-        public ActionResult TestUser()
+        public ActionResult GetListUser()
         {
             var lsUser = UserManager.Users.ToList();
             var data = Json(lsUser, JsonRequestBehavior.AllowGet);
@@ -67,10 +66,83 @@ namespace Blog.Admin.Controllers
             return data;
         }
         //
-        // GET: /Account/Login
+        // POST: /Account/CreateAccount
         [HttpPost]
-        [AllowAnonymous]
-        public ActionResult TestRoles()
+        public JsonResult CreateAccount(RegisterViewModel model)
+        {
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", "Tạo account " + model.Username + " thất bại");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+
+            if (ModelState.IsValid)
+            {
+                //var user = new ApplicationUser { UserName = model.Username, Email = model.Email, };
+                ApplicationUser user = new ApplicationUser();
+                user.Email = model.Email;
+                user.UserName = model.Username;
+                string pass = model.Password;
+
+                var result = UserManager.Create(user, pass);
+                if (result.Succeeded)
+                {
+                    lsData["data"] = "Tạo account " + model.Username + " thành công!";
+                    lsData["status"] = 1;
+                    jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                    jsData.MaxJsonLength = int.MaxValue;
+                    return jsData;
+                }
+                AddErrors(result);
+            }
+
+            jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+            jsData.MaxJsonLength = int.MaxValue;
+            return jsData;
+        }
+        //
+        // POST: /Account/DeleteAccount
+        [HttpPost]
+        public JsonResult DeleteAccount(string userId)
+        {
+
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", "Không tìm thấy account !");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = UserManager.Users.FirstOrDefault(id => id.Id == userId);
+                if (user == null)
+                {
+                    jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                    jsData.MaxJsonLength = int.MaxValue;
+                    return jsData;
+                }
+                var x = UserManager.RemoveFromRoles(userId, UserManager.GetRoles(user.Id).ToArray());
+                if (x.Succeeded)
+                {
+                    var result = UserManager.Delete(user);
+                    if (result.Succeeded)
+                    {
+                        lsData["data"] = "Xóa account " + user.UserName + " thành công!";
+                        lsData["status"] = 1;
+                        jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                        jsData.MaxJsonLength = int.MaxValue;
+                        return jsData;
+                    }
+                    AddErrors(result);
+                }
+            }
+
+            jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+            jsData.MaxJsonLength = int.MaxValue;
+            return jsData;
+        }
+        //
+        // POST: /Account/GetListRoles
+        [HttpPost]
+        public ActionResult GetListRoles()
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
@@ -78,7 +150,171 @@ namespace Blog.Admin.Controllers
             var data = Json(role, JsonRequestBehavior.AllowGet);
             return data;
         }
+        //
+        // POST: /Account/CreateRoles
+        [HttpPost]
+        public JsonResult CreateRoles(string roleName)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", roleName + " đã có trong nhóm. Tạo phân quyền thất bại");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+
+            if (!roleManager.RoleExists(roleName))
+            {
+                roleManager.Create(new IdentityRole(roleName));
+                lsData["data"] = "Tạo phân quyền thành công!";
+                lsData["status"] = 1;
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+            else
+            {
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+        }
+        //
+        // POST: /Account/UpdateRoles
+        [HttpPost]
+        public JsonResult UpdateRoles(string oldRoleName, string newRoleName)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", "Cập nhật thất bại");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+            if (!roleManager.RoleExists(oldRoleName) && roleManager.RoleExists(newRoleName))
+            {
+                lsData["data"] = "Nhóm quyền " + newRoleName + " đã tồn tại trong hệ thống!";
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+            var role = roleManager.FindByName(oldRoleName);
+            if (role != null)
+            {
+                role.Name = newRoleName;
+                roleManager.Update(role);
+                lsData["data"] = "Cập nhật thành công role " + oldRoleName + " thành " + newRoleName + "!";
+                lsData["status"] = 1;
+            }
+
+            jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+            jsData.MaxJsonLength = int.MaxValue;
+            return jsData;
+        }
+        //
+        // POST: /Account/CreateRoles
+        [HttpPost]
+        public JsonResult DeleteRoles(string roleId)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", "Nhóm quyền không tồn tại trong hệ thống");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+            var name = roleManager.FindById(roleId).Name;
+            if (!roleManager.RoleExists(name))
+            {
+                roleManager.Delete(new IdentityRole(name));
+                lsData["data"] = "Xóa nhóm " + name + " thành công!";
+                lsData["status"] = 1;
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+            else
+            {
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+        }
+        //
+        // POST: /Account/AddAccountInRoles
+        [HttpPost]
+        public JsonResult AddAccountInRoles(string userId, string roleName)
+        {
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", "Account " + UserManager.FindById(userId).UserName + " đã có trong nhóm " + roleName + ". Vui lòng chọn nhóm khác!");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+
+            if (!UserManager.IsInRole(userId, roleName))
+            {
+                UserManager.AddToRole(userId, roleName);
+                lsData["data"] = "Thêm thành công account " + UserManager.FindById(userId).UserName + " vào nhóm " + roleName + "!";
+                lsData["status"] = 1;
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+            else
+            {
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+        }
+        //
+        // POST: /Account/UpdateAccountInRoles
+        [HttpPost]
+        public JsonResult UpdateAccountInRoles(string userId, string roleName, string newRoleName)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", "Cập nhật thất bại");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+            if (!roleManager.RoleExists(newRoleName))
+            {
+                lsData["data"] = "Không tìm thấy " + newRoleName + " trong hệ thống!";
+                jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+                jsData.MaxJsonLength = int.MaxValue;
+                return jsData;
+            }
+            if (!UserManager.IsInRole(userId, roleName))
+            {
+                UserManager.RemoveFromRole(userId, roleName);
+                UserManager.AddToRole(userId, newRoleName);
+            }
+            else
+            {
+                UserManager.AddToRole(userId, newRoleName);
+            }
+            lsData["data"] = "Cập nhật thành công account " + UserManager.FindById(userId).UserName + " vào nhóm " + newRoleName + "!";
+            lsData["status"] = 1;
+            jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+            jsData.MaxJsonLength = int.MaxValue;
+            return jsData;
+        }
+        //
+        // POST: /Account/UpdateAccount
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult UpdateAccount(string userId, string email, string newPass)
+        {
+
+            Dictionary<string, object> lsData = new Dictionary<string, object>();
+            lsData.Add("data", "Cập nhật thất bại");
+            lsData.Add("status", 0);
+            JsonResult jsData;
+
+            UserManager.SetEmail(userId, email);
+            //lsData["data"] = "Cập nhật thành công account " + UserManager.FindById(userId).UserName + " vào nhóm " + newRoleName + "!";
+            lsData["status"] = 1;
+            jsData = Json(lsData, JsonRequestBehavior.AllowGet);
+            jsData.MaxJsonLength = int.MaxValue;
+            return jsData;
+        }
+
+        #endregion
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -178,7 +414,7 @@ namespace Blog.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email,  };
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

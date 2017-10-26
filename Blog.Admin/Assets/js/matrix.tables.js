@@ -1,6 +1,6 @@
 ﻿/*Config*/
-var customConfig = {
-    dfUrlAccount: "/Account/"
+var BC = {
+    dfUrl: "/PartialView/LoadData"
 }
 var AjaxConfig = {
     timeout: 60 * 60000
@@ -69,10 +69,13 @@ function createGridDataTable(allData) {
     var sDom = allData.dom || '<""l>t<"F"fp>'
     var fnRowCallback = allData.fnRowCallback || null;
     var fnFooterCallback = allData.fnFooterCallback || null;
+    //use store
     var url2 = allData.url;
     var spName = url2.spName || "";
+    var jsonFilter = url2.jsonFilter || "";
+    //filter
     var url = url2.url || "";
-    var filter = allData.filter || { spName: spName };
+    var filter = allData.filter || { SPName: spName, JsonFilter: JSON.stringify(jsonFilter) };
     //column
     var colDefs = allData.colDefs || [];
     var columns = allData.columns;
@@ -88,7 +91,7 @@ function createGridDataTable(allData) {
         "oLanguage": oLanguage(),
         "aoColumnDefs": colDefs,
         "aoColumns": columns,
-        "aaData": [],//default null
+        "aaData": [],
         "bFilter": true,
         "sScrollX": "100%",
         "sScrollXInner": "110%",
@@ -107,7 +110,10 @@ function createGridDataTable(allData) {
             dataTable.fnAddData(da)
         },
         onError: function (x, e) {
-            alert(getError({ x: x, e: e }));
+            var d = getError({ x: x, e: e });
+            d.title = d.status;
+            d.icon = "error";
+            alert(d);
         }
     });
     UC[ctrID] = dataTable;
@@ -173,23 +179,48 @@ function getDataObject(allData) {
             if (onSuccess != null) { onSuccess(data); }
         }
         , error: function (x, e) {
-            alert(getError({ x: x, e: e }));
             a.abort();
             if (onError != null) { onError(x, e); }
+            var d = getError({ x: x, e: e });
+            d.icon = "error";
+            d.title = d.status;
+            alert(d);
         }
     });
 }
 
+function alert(allData) {
+    var icon = allData.icon || "";//"error", "success", "info", "warning"
+    var title = allData.title || "Thông báo";
+    var message = allData.message || "";
+    var btnOk = allData.OkText || "Xác nhận";
+    swal(title, message, icon, { buttons: btnOk });
+}
+function alertConfirm(allData) {
+    var icon = allData.icon || "";//"error", "success", "info", "warning"
+    var title = allData.title || "Thông báo";
+    var message = allData.message || "";
+    var btn = { ok: allData.OkText || "Xác nhận", cancel: allData.CancelText || "Hủy bỏ" };
+    swal(title.toString(), message.toString(), icon, { buttons: btn })
+        .then((value) => {
+        switch (value) {
+            case "ok":
+                allData.fnExecute;
+                break;
+            case "cancel":
+                break;
+        }
+    });
+}
 function getError(allData) {
     var x = allData.x;
     var e = allData.e;
-
-    var responseText = JSON.parse(x.responseText);
+    var statusText = x.statusText;
     var d = {
-        title: sms.error
-        , message: "<b>Status</b>: " + x.status + "</br><b>Message</b>: " + responseText.message
+        title: e
+        , status: x.status.toString()
+        , message: statusText
     };
-
     return d;
 }
 
@@ -252,7 +283,7 @@ function parseDate(jsonDate) {
     var re = /-?\d+/;
     var m = re.exec(jsonDate);
     var date = new Date(parseInt(m[0]));
-    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear(); 
+    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
 }
 function parseDateTime(jsonDate) {
     var re = /-?\d+/;

@@ -1,4 +1,4 @@
-﻿var dfUrl = "/Account/TestRoles";
+﻿var dfUrl = "/Account/GetListRoles";
 $(document).ready(function () {
     var d = R.fun.loadGrid();
     createGridDataTable(d);
@@ -13,8 +13,8 @@ var R = {
                 , url: { url: dfUrl }
                 , refix: { key: 1, id: "Id" }
                 , colDefs: [
-                   { "sName": "Stt", "sClass": "text-center", "aTargets": [0], "sWidth": "30px" },
-                    { "sClass": "text-center", "aTargets": [3], "sWidth": "75px" }
+                   { "sName": "Stt", "sClass": "col-ident-id", "aTargets": [0] },
+                    { "sClass": "col-actions-1", "aTargets": [3] }
                 ]
                 , columns: [
                        { "sName": "Stt", "sTitle": "STT", "mData": "Stt" },
@@ -28,10 +28,10 @@ var R = {
     },
     events: {
         trashAction: function (data) {
-            alert(data.data);
+            alert({ data: data.data });
         },
         editAction: function (data) {
-            alert(data.data);
+            alert({ data: data.data });
         }
     }
 };

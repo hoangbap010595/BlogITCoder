@@ -1,4 +1,4 @@
-﻿var dfUrl = "/Account/TestUser";
+﻿var dfUrl = "/Account/GetListUser";
 
 $(document).ready(function () {
     var d = R.fun.loadGrid();
@@ -14,12 +14,12 @@ var R = {
                 , url: { url: dfUrl }
                 , refix: { key: 2, id: "Id" }
                 , colDefs: [
-                    { "sClass": "text-center", "aTargets": [0], "sWidth": "30px" }
-                    ,{ "aTargets": [1], "bVisible": false }
-                    ,{ "sClass": "text-center", "aTargets": [4], "sWidth": "80px" }
-                    ,{ "sClass": "text-left", "aTargets": [5], "sWidth": "140px" }
-                    ,{ "sClass": "text-center", "aTargets": [6], "sWidth": "80px" }
-                    ,{ "sClass": "text-center", "aTargets": [7], "sWidth": "120px" }
+                    { "sClass": "col-ident-id", "aTargets": [0] }
+                    , { "aTargets": [1], "bVisible": false }
+                    , { "sClass": "col-bit", "aTargets": [4] }
+                    , { "sClass": "text-left", "aTargets": [5], "sWidth": "140px" }
+                    , { "sClass": "col-bit", "aTargets": [6] }
+                    , { "sClass": "col-actions-2", "aTargets": [7] }
                 ]
                 , columns: [
                       { "sTitle": "STT", "mData": "Stt" },
@@ -32,10 +32,9 @@ var R = {
                       { "sTitle": "Actions", "mData": "Actions" }
                 ]
                 , fnRowCallback: function (nRow, aData, iDisplayIndex) {
-                    console.log(aData);
                     if (aData.EmailConfirmed == true) {
                         $('td:eq(3)', nRow).html('<b>Ok</b>');
-                    }else 
+                    } else
                         $('td:eq(3)', nRow).html('');
                     if (aData.PhoneNumberConfirmed == true) {
                         $('td:eq(5)', nRow).html('<b>Ok</b>');
@@ -49,13 +48,20 @@ var R = {
     },
     events: {
         trashAction: function (data) {
-            alert(data.data);
+            alert({ message: data.data });
         },
         editAction: function (data) {
-            alert(data.data);
+            alert({ message: data.data, icon: "success" });
         },
         detailsAction: function (data) {
-            alert(data.data);
+            alertConfirm({
+                title: "Thông báo!"
+                , message: data.data
+                , icon: "info"
+                , fnExecute: function () {
+                    R.events.editAction(data.data);
+                }
+            })
         }
     }
 };

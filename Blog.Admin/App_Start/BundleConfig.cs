@@ -78,6 +78,7 @@ namespace Blog.Admin
                      , "~/Assets/js/matrix.dashboard.js"              
                      , "~/Assets/js/matrix.interface.js"                   
                      , "~/Assets/js/matrix.popover.js"
+                     , "~/Assets/js/sweetalert.min.js"
                      , "~/Assets/js/bootstrap-wysihtml5.js"));
 
             bundles.Add(new StyleBundle("~/Content/matrix").Include(

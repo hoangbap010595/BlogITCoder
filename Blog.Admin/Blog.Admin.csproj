@@ -348,6 +348,7 @@
     <Content Include="Assets\img\select2.png" />
     <Content Include="Assets\img\spinner.gif" />
     <Content Include="Assets\img\sprite.png" />
+    <Content Include="Assets\js\sweetalert.min.js" />
     <Content Include="icon1.ico" />
     <Content Include="icon2.ico" />
     <Content Include="img\breadcrumb.png" />
