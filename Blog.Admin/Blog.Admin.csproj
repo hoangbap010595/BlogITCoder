@@ -348,7 +348,6 @@
     <Content Include="Assets\img\select2.png" />
     <Content Include="Assets\img\spinner.gif" />
     <Content Include="Assets\img\sprite.png" />
-    <Content Include="Assets\js\sweetalert.min.js" />
     <Content Include="icon1.ico" />
     <Content Include="icon2.ico" />
     <Content Include="img\breadcrumb.png" />
@@ -497,6 +496,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Assets\js\sweetalert.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Service References\ASPSMSX2\Blog.Admin.ASPSMSX2.vouchers.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

@@ -12,7 +12,7 @@ var R = {
         loadGrid: function () {
             var d = {
                 ctrID: "data-table-category"
-                , url: { url: dfUrl, spName: "Category_Get", jsonFilter: {a: "a", b: "b", c: "c"} }
+                , url: { url: dfUrl, spName: "Category_Get" }//, jsonFilter: { a: "a", b: "b", c: "c" } 
                 , refix: { key: 1, id: "Id" }
                 , colDefs: [
                     { "sClass": "col-ident-id", "aTargets": [0]}

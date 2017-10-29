@@ -5,7 +5,7 @@ var BC = {
 var AjaxConfig = {
     timeout: 60 * 60000
 }
-var UC = [];
+var UC = {};
 $(document).ready(function () {
 
     $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
@@ -116,7 +116,7 @@ function createGridDataTable(allData) {
             alert(d);
         }
     });
-    UC[ctrID] = dataTable;
+    UC.ctrID = dataTable;
 }
 
 function refixData(allData) {
@@ -282,12 +282,16 @@ function deepCopy(allData) {
 function parseDate(jsonDate) {
     var re = /-?\d+/;
     var m = re.exec(jsonDate);
+    if (m == null)
+        return "";
     var date = new Date(parseInt(m[0]));
     return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
 }
 function parseDateTime(jsonDate) {
     var re = /-?\d+/;
     var m = re.exec(jsonDate);
+    if (m == null)
+        return "";
     var date = new Date(parseInt(m[0]));
     return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 }
